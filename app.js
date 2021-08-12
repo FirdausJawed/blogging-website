@@ -43,7 +43,7 @@ app.post("/compose",function(req, res){
 
   const post = {
     title: req.body.postitle,
-    comment : req.body.postbody
+    content : req.body.postbody
   }
  posts.push(post);
  res.redirect("/");
@@ -54,7 +54,10 @@ app.get("/posts/:postName",function(req, res){
   posts.forEach(function(post){
     const storedTitle = _.lowerCase(post.title);
     if (storedTitle===requestedTitle){
-    res.render
+    res.render("post",{
+      title: post.title,
+      content: post.content
+    });
   }
   })
 });
